@@ -3,7 +3,8 @@ import os
 import json
 import numpy as np
 import logging
-from datasets import load_metric
+# from datasets import load_metric
+from evaluate import load
 import spacy
 import torch
 from questeval import DIR, __version__
@@ -103,7 +104,7 @@ class QuestEval:
         self.do_weighter = do_weighter
         self.list_scores = list_scores
         if 'bertscore' in self.list_scores:
-            self.metric_BERTScore = load_metric("bertscore")
+            self.metric_BERTScore = load("bertscore")
 
         if language == 'en':
             try:
