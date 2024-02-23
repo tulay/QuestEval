@@ -15,9 +15,9 @@ It is the result from an (on-going) international collaboration, and so far it t
 Planned extensions: 
 - Multilingual Evaluation
 
-## 1/ Installing QuestEval
+## Installing QuestEval
 ```
-$ conda create --name questeval python=3.9
+$ conda create --name questeval python=3.11
 $ conda activate questeval
 ```
 **WARNING**: You need to install, before any package, correct version of [pytorch](https://pytorch.org/get-started/locally/#start-locally) linked to your cuda version.
@@ -30,7 +30,7 @@ $ conda activate questeval
 (questeval) $ pip install -e .
 ```
 
-## 2/ Using QuestEval 
+## Using QuestEval 
 
 The default `task` is `text2text` and the default `language` is `en`. It allows to measure the content similarity between any two English texts. This means that **QuestEval can be used to evaluate any NLG task where references are available**. Alternatively, we can compare the hyothesis to the source as detailed below.  
 For tasks specificities, see below. 
@@ -122,7 +122,7 @@ Output:
 The pre-trained QA/QG models will be automatically downloaded from Hugging Face. Alternatively, you can use your own models and change them dynamically with the `questeval.set_model(model_name)` method that takes as input a `path` or a Hugging Face `model_name`. If the `model_name` is hosted on the Hugging Face hub, it will be downloaded automatically.
 You can also use any of your beloved models, the only required method to implement is the `model.predict()`.
 
-## 3/ Tasks specificities
+## Tasks specificities
 
 ### Summarization
 
