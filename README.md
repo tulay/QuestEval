@@ -16,16 +16,16 @@ Planned extensions:
 - Multilingual Evaluation
 
 ## Installing QuestEval
-```
+```bash
 $ conda create --name questeval python=3.11
 $ conda activate questeval
 ```
 **WARNING**: You need to install, before any package, correct version of [pytorch](https://pytorch.org/get-started/locally/#start-locally) linked to your cuda version.
-```
+```bash
 (questeval) $ conda install pytorch cudatoolkit=10.1 -c pytorch
 ```
 
-```
+```bash
 (questeval) $ conda install pip
 (questeval) $ pip install -e .
 ```
@@ -37,7 +37,7 @@ For tasks specificities, see below.
 
 Here is an example. Note that the code can take time since it requires generating and answering a set of questions. However, if you let the parameter `use_cache` to its default value at `True`, running the same example again will be very fast this time.
 
-```
+```python
 from questeval.questeval_metric import QuestEval
 questeval = QuestEval(no_cuda=True)
 
@@ -64,7 +64,7 @@ score = questeval.corpus_questeval(
 print(score)
 ```
 Output:
-```
+```bash
 {'corpus_score': 0.6115364039438322, 
 'ex_level_scores': [0.5698804143875364, 0.6531923935001279]}
 ```
@@ -76,7 +76,7 @@ In the output, you have access to the `corpus_score` which corresponds to the av
 
 Yes, QuestEval can score a text without any references:
 
-```
+```python
 score = questeval.corpus_questeval(
     hypothesis=[prediction_1, prediction_2], 
     sources=[source_1, source_2]
@@ -85,7 +85,7 @@ score = questeval.corpus_questeval(
 print(score)
 ```
 Output:
-```
+```bash
 {'corpus_score': 0.5538727587335324, 
 'ex_level_scores': [0.5382940950847808, 0.569451422382284]}
 ```
@@ -93,15 +93,15 @@ Output:
 ### Logs
 
 You can have access to the logs containing all the information about the generated questions or the question answering outputs:
-```
+```python
 log = questeval.open_log_from_text(source_1)
 ```
 For instance, to print the questions asked on `source_1`: 
-```
+```python
 print(log['asked'].keys())
 ```
 Output:
-```
+```bash
 dict_keys(['Since 2000, the winner of the Kate Greenaway medal has also been given to the Colin Me', 'What medal has been given to the winner of the Colin Mears award?', 'What has been given to the Colin Mears award since 2000?', 'What has been given to the winner of the Colin Mears award since 2000?', 'What has been given to the winner of the Kate Greenaway medal since 2000?'])
 ```
 
@@ -109,11 +109,11 @@ dict_keys(['Since 2000, the winner of the Kate Greenaway medal has also been giv
 
 For reproducibility purpose, we defined a hash that contains exhaustive information such as the QuestEval version, as well as the used models names and the scores types:
 
-```
+```python
 questeval.__hash__()
 ```
 Output:
-```
+```bash
 "QuestEval_version=0.2.4_task=text2text_lang=en_preproc=None_consist=False_scores=('answerability', 'bertscore', 'f1')W_hash=None_hyp_QA_hash=ThomasNLG/t5-qa_squad2neg-en_ref_QA_hash=ThomasNLG/t5-qa_squad2neg-en_src_QA_hash=ThomasNLG/t5-qa_squad2neg-en_hyp_QG_hash=ThomasNLG/t5-qg_squad1-en_ref_QG_hash=ThomasNLG/t5-qg_squad1-en_src_QG_hash=ThomasNLG/t5-qg_squad1-en"
 ```
 
