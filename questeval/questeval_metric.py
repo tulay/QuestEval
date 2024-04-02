@@ -3,7 +3,6 @@ import os
 import json
 import numpy as np
 import logging
-# from datasets import load_metric
 from evaluate import load
 import spacy
 import torch
@@ -44,7 +43,7 @@ class QuestEval:
                 the task to evaluate with QuestEval
 
         Return:
-            :obj:`torch.optim.lr_scheduler.LambdaLR` with the appropriate schedule.
+           None 
         """
         """
         format for the json logs:

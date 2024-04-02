@@ -33,13 +33,13 @@ $ conda activate questeval
 ## Using QuestEval 
 
 The default `task` is `text2text` and the default `language` is `en`. It allows to measure the content similarity between any two English texts. This means that **QuestEval can be used to evaluate any NLG task where references are available**. Alternatively, we can compare the hyothesis to the source as detailed below.  
-For tasks specificities, see below. 
+Other available tasks are: `summarization`, `text_simplification`, and `data2text`. For more details, see **Tasks specificities** section below. 
 
 Here is an example. Note that the code can take time since it requires generating and answering a set of questions. However, if you let the parameter `use_cache` to its default value at `True`, running the same example again will be very fast this time.
 
 ```python
 from questeval.questeval_metric import QuestEval
-questeval = QuestEval(no_cuda=True)
+questeval = QuestEval(no_cuda=True, task="text2text")
 
 source_1 = "Since 2000, the recipient of the Kate Greenaway medal has also been presented with the Colin Mears award to the value of 35000."
 prediction_1 = "Since 2000, the winner of the Kate Greenaway medal has also been given to the Colin Mears award of the Kate Greenaway medal."
